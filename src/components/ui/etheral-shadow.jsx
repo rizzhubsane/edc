@@ -52,7 +52,7 @@ export function EtheralShadow({
 
   return (
     <div
-      className={className}
+      className={`etheral-shadow-bg${className ? ` ${className}` : ''}`}
       style={{ overflow: 'hidden', position: 'relative', width: '100%', height: '100%', ...style }}
     >
       <div

@@ -44,7 +44,7 @@ const Navbar = ({ SVGs }) => {
         <div className="px-6 sm:px-8 flex items-center justify-between h-[40px] lg:h-[50px]">
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer flex items-center" onClick={() => navigate("/")}>
-            <img src={SVGs.logo} alt="eDC IIT Delhi Logo" className="h-7 lg:h-8 w-auto" />
+            <img src={SVGs.logo} alt="eDC IIT Delhi Logo" className="h-7 lg:h-8 w-auto" loading="eager" decoding="async" />
           </div>
 
           {/* Desktop Navigation */}

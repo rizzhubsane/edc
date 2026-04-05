@@ -234,7 +234,7 @@ const Resource = () => {
 
           {/* Right Side - Tree Image */}
           <div className="w-full lg:w-1/2 flex items-end justify-center lg:justify-end mt-12 lg:mt-0 h-full absolute bottom-0 right-0 lg:relative opacity-30 lg:opacity-100 pointer-events-none lg:pointer-events-auto">
-            <img src={tree} alt="Resources Tree" className="w-full max-w-md sm:max-w-lg lg:max-w-xl object-contain object-bottom h-full max-h-[70vh] lg:max-h-[85vh]" />
+            <img src={tree} alt="Resources Tree" loading="lazy" decoding="async" className="w-full max-w-md sm:max-w-lg lg:max-w-xl object-contain object-bottom h-full max-h-[70vh] lg:max-h-[85vh]" />
           </div>
         </div>
       </div>
@@ -278,6 +278,8 @@ const Resource = () => {
                   <img
                     src={blog.image}
                     alt={blog.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>

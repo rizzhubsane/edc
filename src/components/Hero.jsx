@@ -42,6 +42,8 @@ const Hero = () => {
         <img 
           src={edcLogo} 
           alt="eDC Background Logo" 
+          loading="eager"
+          decoding="async"
           className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] md:w-[130%] max-w-[1200px] object-contain opacity-[0.06] z-[-1] pointer-events-none transition-all duration-1000 ease-out ${
             mounted ? 'scale-100' : 'scale-95'
           }`}

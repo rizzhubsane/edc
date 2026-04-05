@@ -53,6 +53,8 @@ const About = ({ JPG }) => {
         <img
           src={JPG.edcteam}
           alt="eDC Team Family"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-primary-deep to-transparent"></div>

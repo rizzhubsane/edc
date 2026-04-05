@@ -56,14 +56,20 @@ export const BackgroundGradientAnimation = ({
   };
 
   const [isSafari, setIsSafari] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
   useEffect(() => {
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduceMotion(mq.matches);
+    const handler = (e) => setReduceMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
   }, []);
 
   return (
     <div
       className={cn(
-        "w-full relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "bg-gradient-animation-canvas w-full relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
     >
@@ -84,7 +90,8 @@ export const BackgroundGradientAnimation = ({
 
       <div className={cn("relative z-10", className)}>{children}</div>
 
-      <div
+      {/* Skip expensive blobs entirely when the user prefers reduced motion */}
+      {!reduceMotion && <div
         className={cn(
           "absolute inset-0 blur-lg",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
@@ -147,7 +154,7 @@ export const BackgroundGradientAnimation = ({
             )}
           />
         )}
-      </div>
+      </div>}
     </div>
   );
 };

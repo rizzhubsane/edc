@@ -108,6 +108,8 @@ const GalleryPage = ({ IMAGES }) => {
               <img 
                 src={item.src} 
                 alt={item.title} 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
@@ -135,6 +137,8 @@ const GalleryPage = ({ IMAGES }) => {
             <img 
               src={lightboxImage.src} 
               alt={lightboxImage.title} 
+              loading="eager"
+              decoding="async"
               className="max-w-full max-h-[85vh] object-contain rounded-[8px] shadow-2xl"
             />
           </div>

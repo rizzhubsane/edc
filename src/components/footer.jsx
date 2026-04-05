@@ -56,6 +56,8 @@ function Footer() {
               <img
                 src={logoMark}
                 alt="eDC IIT Delhi"
+                loading="lazy"
+                decoding="async"
                 className="h-10 w-auto max-w-[min(100%,260px)] object-contain object-left md:h-11"
               />
             </div>

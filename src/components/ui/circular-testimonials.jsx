@@ -120,6 +120,8 @@ export const CircularTestimonials = ({
               key={t.src}
               src={t.src}
               alt={t.name}
+              loading="lazy"
+              decoding="async"
               className="testimonial-image"
               style={getImageStyle(index)}
             />

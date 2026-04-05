@@ -119,6 +119,34 @@
   100% { transform: translateY(-50%); }
 }
 
+/* ── Preloader animations ─────────────────────────────────────── */
+@keyframes preloaderBounce {
+  0%, 100% { transform: translateY(0);     opacity: 0.4; }
+  50%       { transform: translateY(-10px); opacity: 1;   }
+}
+
+@keyframes preloaderBar {
+  0%   { width: 0%;    }
+  60%  { width: 75%;   }
+  90%  { width: 92%;   }
+  100% { width: 100%;  }
+}
+
+/* ── Global prefers-reduced-motion ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Pause CSS keyframe animations */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Hide heavy SVG filter backgrounds */
+  .etheral-shadow-bg,
+  .bg-gradient-animation-canvas {
+    display: none !important;
+  }
+}
+
 /* Remove Splide edge fade effect */
 .splide__track::before,
 .splide__track::after {
