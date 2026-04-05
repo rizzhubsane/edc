@@ -3,15 +3,12 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import compression from 'vite-plugin-compression2'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    // Gzip for older servers
-    compression({ algorithm: 'gzip', exclude: [/\.(png|jpe?g|gif|webp|svg|woff2?)$/i] }),
-    // Brotli for modern servers / Cloudflare Pages
-    compression({ algorithm: 'brotliCompress', exclude: [/\.(png|jpe?g|gif|webp|svg|woff2?)$/i] }),
-  ],
+  plugins: [react(), tailwindcss(), // Gzip for older servers
+  compression({ algorithm: 'gzip', exclude: [/\.(png|jpe?g|gif|webp|svg|woff2?)$/i] }), // Brotli for modern servers / Cloudflare Pages
+  compression({ algorithm: 'brotliCompress', exclude: [/\.(png|jpe?g|gif|webp|svg|woff2?)$/i] }), cloudflare()],
 
   server: {
     port: 5183,
