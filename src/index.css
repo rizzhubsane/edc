@@ -1,0 +1,129 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Gradient animation */
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+
+  /* Colors */
+  --color-primary-deep: #0D0B2E;
+  --color-primary-dark: #1A1145;
+  --color-primary-mid: #2D1B69;
+  --color-primary-brand: #3A1F8E;
+  
+  --color-accent-blue: #2563EB;
+  --color-accent-cyan: #38BDF8;
+  --color-accent-gold: #E2B84A;
+  
+  --color-neutral-white: #F8F9FA;
+  --color-neutral-cream: #EDE8D0;
+  --color-neutral-light: #C4B5D4;
+  --color-neutral-muted: #8B7BA8;
+  
+  --color-success: #4ADE80;
+  --color-text-primary: #FFFFFF;
+  --color-text-body: #D1C4E9;
+  --color-text-dark: #1A1145;
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Text Sizes */
+  --text-hero: clamp(3rem, 6vw, 5rem);
+  --text-h1: clamp(2.25rem, 4vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --text-body: 1.125rem;
+  --text-small: 0.875rem;
+}
+
+@layer base {
+  :root {
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, #0D0B2E 0%, #1A1145 40%, #2D1B69 100%);
+    --gradient-card: linear-gradient(180deg, #1A1145 0%, #0D0B2E 100%);
+    --gradient-cta: linear-gradient(135deg, #2563EB 0%, #38BDF8 100%);
+    --gradient-gold: linear-gradient(135deg, #E2B84A 0%, #D4A030 100%);
+    
+    /* Spacing & Layout */
+    --section-padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 6rem);
+    --card-padding: 1.5rem;
+    --card-radius: 16px;
+    --button-radius: 12px;
+    --max-width: 1200px;
+    --gap-grid: 1.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-primary-deep text-text-body font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-text-primary;
+  }
+}
+
+@layer utilities {
+  .bullet-custom ::marker {
+    color: #306ee8; /* Custom color */
+  }
+  .text-glow {
+    /* Strong cyan glow */
+    text-shadow: 0 0 10px rgba(28,181,224,0.95), 0 0 20px rgba(28,181,224,0.6);
+  }
+
+  .text-glow-soft {
+    /* Subtle white glow for contrast on dark backgrounds */
+    text-shadow: 0 0 6px rgba(255,255,255,0.6);
+  }
+}
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes moveHorizontal {
+  0%   { transform: translateX(-50%) translateY(-10%); }
+  50%  { transform: translateX(50%)  translateY(10%);  }
+  100% { transform: translateX(-50%) translateY(-10%); }
+}
+
+@keyframes moveInCircle {
+  0%   { transform: rotate(0deg);   }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes moveVertical {
+  0%   { transform: translateY(-50%); }
+  50%  { transform: translateY(50%);  }
+  100% { transform: translateY(-50%); }
+}
+
+/* Remove Splide edge fade effect */
+.splide__track::before,
+.splide__track::after {
+  display: none !important;
+  background: none !important;
+}
+
+

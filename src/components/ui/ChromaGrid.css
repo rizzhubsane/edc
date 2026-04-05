@@ -1,0 +1,179 @@
+.chroma-grid {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: transparent;
+  isolation: isolate;
+  --x: 50%;
+  --y: 50%;
+  --r: 350px;
+  --chroma-surface-solid: var(--color-primary-deep, #0d0b2e);
+}
+
+.chroma-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: calc(20% - 1.2rem); /* 5 items per row */
+  min-width: 180px;
+  max-width: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-primary-deep, #0d0b2e) 40%, transparent);
+  border: 1px solid color-mix(in srgb, #3ca2fa 18%, transparent);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+@media (max-width: 1024px) {
+  .chroma-card {
+    width: calc(33.333% - 1rem); /* 3 items per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .chroma-card {
+    width: calc(50% - 0.75rem); /* 2 items per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .chroma-card {
+    width: 100%; /* 1 item per row */
+    max-width: 320px;
+  }
+}
+
+.chroma-card:hover {
+  border-color: var(--card-border, rgba(255, 255, 255, 0.3));
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Inner glow effect on hover */
+.chroma-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.chroma-card:hover::after {
+  opacity: 1;
+}
+
+.chroma-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    var(--color-primary-dark, #1a1145) 0%,
+    var(--color-primary-deep, #0d0b2e) 55%,
+    color-mix(in srgb, var(--color-primary-deep, #0d0b2e) 75%, #3ca2fa 25%) 100%
+  );
+}
+
+.chroma-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* Focuses slightly above center for faces */
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chroma-card:hover .chroma-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.chroma-info {
+  position: relative;
+  z-index: 11;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: color-mix(in srgb, var(--chroma-surface-solid, #0d0b2e) 92%, #3ca2fa 8%);
+  border-top: 1px solid color-mix(in srgb, #3ca2fa 14%, transparent);
+}
+
+.chroma-info .name {
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.chroma-info .role {
+  color: var(--color-accent-cyan, #38bdf8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Spotlight dim: no full grayscale — keeps purple/blue in line with page + footer gradient */
+.chroma-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  backdrop-filter: saturate(0.82) brightness(0.66);
+  -webkit-backdrop-filter: saturate(0.82) brightness(0.66);
+
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.5) 50%,
+    white 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    transparent 0%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.5) 50%,
+    white 100%
+  );
+}
+
+.chroma-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  backdrop-filter: saturate(0.88) brightness(0.72);
+  -webkit-backdrop-filter: saturate(0.88) brightness(0.72);
+
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    white 0%,
+    white 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    white 0%,
+    white 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}

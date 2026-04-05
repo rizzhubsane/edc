@@ -1,0 +1,51 @@
+@keyframes initiatives-fade-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.initiatives-interactive__title-animate {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: initiatives-fade-in-top 0.8s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+.initiatives-interactive__subtitle-animate {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: initiatives-fade-in-top 0.8s ease-in-out forwards;
+  animation-delay: 0.6s;
+}
+
+/* Bottom scrim: strong tint at base, soft fade upward so copy stays readable on busy photos */
+.initiatives-panel__scrim {
+  height: 42%;
+  min-height: 7.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(13, 11, 46, 0.94) 0%,
+    rgba(13, 11, 46, 0.72) 22%,
+    rgba(13, 11, 46, 0.38) 48%,
+    rgba(13, 11, 46, 0.12) 72%,
+    rgba(13, 11, 46, 0) 100%
+  );
+}
+
+.initiatives-panel__scrim--active {
+  height: 58%;
+  min-height: 11rem;
+  background: linear-gradient(
+    to top,
+    rgba(13, 11, 46, 0.96) 0%,
+    rgba(13, 11, 46, 0.78) 18%,
+    rgba(13, 11, 46, 0.45) 42%,
+    rgba(13, 11, 46, 0.16) 68%,
+    rgba(13, 11, 46, 0) 96%
+  );
+}
