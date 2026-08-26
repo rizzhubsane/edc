@@ -1,181 +1,133 @@
-import React, { useState, useEffect } from "react";
-import Section from "../components/Section";
-import { BackgroundGradientAnimation } from "../components/ui/background-gradient-animation";
+import { useEffect, useMemo, useState } from 'react'
 
-const GalleryPage = ({ IMAGES }) => {
+const galleryUrls = Object.values(
+  import.meta.glob('../assets/gallery_pictures/*.{png,jpg,jpeg,webp,gif,svg,JPG,JPEG}', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  })
+)
+
+const FILTERS = ['All', 'BECon', 'Moonshot', 'Workshops', 'Team']
+const CATEGORIES = ['BECon', 'Moonshot', 'Workshops', 'Team']
+
+const GalleryPage = () => {
+  const [lightbox, setLightbox] = useState(null)
+  const [activeFilter, setActiveFilter] = useState('All')
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [lightboxImage, setLightboxImage] = useState(null);
+  const items = useMemo(
+    () =>
+      galleryUrls.map((src, index) => ({
+        id: index + 1,
+        src,
+        category: CATEGORIES[index % CATEGORIES.length],
+      })),
+    []
+  )
 
-  const filters = ['All', 'BECon', 'Moonshot', 'Workshops', 'Team'];
+  const visible = activeFilter === 'All' ? items : items.filter((item) => item.category === activeFilter)
 
-  const galleryItems = Object.entries(IMAGES || {}).map(([path, url], index) => {
-    // Determine a mock category based on index just to keep the filters working,
-    // or you can assign them all to 'All' if you prefer.
-    const categories = ['BECon', 'Moonshot', 'Workshops', 'Team'];
-    const category = categories[index % categories.length];
-    
-    return {
-      id: index + 1,
-      src: url,
-      category: category,
-      title: `Gallery Image ${index + 1}`,
-      year: '2024'
-    };
-  });
-
-  const filteredItems = activeFilter === 'All' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeFilter);
-
-  // Lightbox keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!lightboxImage) return;
-      
-      const currentIndex = filteredItems.findIndex(item => item.id === lightboxImage.id);
-      
-      if (e.key === 'Escape') setLightboxImage(null);
-      if (e.key === 'ArrowRight' && currentIndex < filteredItems.length - 1) {
-        setLightboxImage(filteredItems[currentIndex + 1]);
+    if (lightbox == null) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setLightbox(null)
+      if (e.key === 'ArrowRight') {
+        setLightbox((cur) => (cur == null ? cur : Math.min(visible.length - 1, cur + 1)))
       }
-      if (e.key === 'ArrowLeft' && currentIndex > 0) {
-        setLightboxImage(filteredItems[currentIndex - 1]);
+      if (e.key === 'ArrowLeft') {
+        setLightbox((cur) => (cur == null ? cur : Math.max(0, cur - 1)))
       }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxImage, filteredItems]);
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightbox, visible.length])
 
   return (
-    <BackgroundGradientAnimation
-      gradientBackgroundStart="rgb(13, 11, 46)"
-      gradientBackgroundEnd="rgb(26, 17, 69)"
-      firstColor="45, 27, 105"
-      secondColor="56, 189, 248"
-      thirdColor="37, 99, 235"
-      fourthColor="13, 11, 46"
-      fifthColor="58, 31, 142"
-      pointerColor="56, 189, 248"
-      blendingValue="hard-light"
-      size="70%"
-      containerClassName="min-h-screen"
-      className="w-full"
-    >
-      {/* Page content */}
-      <div className="relative z-10">
-
-      {/* Page Header */}
-      <Section variant="dark" className="!bg-transparent pt-32 lg:pt-40 pb-8">
-        <div className="max-w-[800px] text-center mx-auto">
-          <h1 className="font-heading font-bold text-text-primary text-[clamp(3.5rem,7vw,5.5rem)] mb-4">
+    <main className="band-lilac">
+      <header className="page-hero">
+        <div className="site-wrap">
+          <h1 className="text-hero font-semibold text-ink tracking-[-0.038em] text-balance max-w-[16ch] mx-auto">
             Gallery
           </h1>
-          <p className="font-body text-text-body text-lg md:text-xl mb-10">
+          <p className="mt-5 text-[18px] leading-relaxed text-muted max-w-[34rem] mx-auto">
             eDC through the years.
           </p>
         </div>
-      </Section>
+      </header>
 
-
-      {/* Gallery Grid */}
-      <Section variant="dark" className="!bg-transparent pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[250px]">
-          {filteredItems.map((item, index) => {
-            const getBentoClass = (i) => {
-              const pattern = i % 6;
-              switch (pattern) {
-                case 0: return 'md:col-span-2 md:row-span-2';
-                case 1: return 'md:col-span-1 md:row-span-1';
-                case 2: return 'md:col-span-1 md:row-span-1';
-                case 3: return 'md:col-span-2 md:row-span-1';
-                case 4: return 'md:col-span-1 md:row-span-2';
-                case 5: return 'md:col-span-1 md:row-span-1';
-                default: return '';
-              }
-            };
-
-            return (
-            <div 
-              key={item.id}
-              className={`relative rounded-[12px] overflow-hidden cursor-pointer group ${getBentoClass(index)}`}
-              onClick={() => setLightboxImage(item)}
-            >
-              <img 
-                src={item.src} 
-                alt={item.title} 
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+      <section>
+        <div className="site-wrap pt-2 pb-16 md:pt-4 md:pb-20">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {FILTERS.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => {
+                  setActiveFilter(filter)
+                  setLightbox(null)
+                }}
+                className={`chip ${activeFilter === filter ? 'is-on' : ''}`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+          {visible.length === 0 ? (
+            <p className="text-muted text-[14px] py-16">No photographs yet.</p>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-3">
+              {visible.map((item, index) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setLightbox(index)}
+                  className={`relative overflow-hidden rounded-[20px] bg-canvas-soft img-zoom ${
+                    index === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto md:min-h-[420px]' : 'aspect-square'
+                  }`}
+                >
+                  <img
+                    src={item.src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
             </div>
-          )})}
+          )}
         </div>
-      </Section>
+      </section>
 
-      </div>{/* end relative z-10 */}
-
-      {/* Lightbox Modal */}
-      {lightboxImage && (
-        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4">
-          <button 
-            className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2"
-            onClick={() => setLightboxImage(null)}
+      {lightbox != null && visible[lightbox] && (
+        <div
+          className="fixed inset-0 z-[80] bg-ink/90 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photograph"
+        >
+          <img
+            src={visible[lightbox].src}
+            alt=""
+            className="max-w-[92vw] max-h-[88vh] object-contain rounded-[8px]"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            type="button"
+            className="absolute top-5 right-5 text-white/80 hover:text-white text-[14px]"
+            onClick={() => setLightbox(null)}
           >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+            Close
           </button>
-
-          <div className="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center">
-            <img 
-              src={lightboxImage.src} 
-              alt={lightboxImage.title} 
-              loading="eager"
-              decoding="async"
-              className="max-w-full max-h-[85vh] object-contain rounded-[8px] shadow-2xl"
-            />
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none">
-            <button 
-              className="pointer-events-auto p-3 rounded-full bg-black/50 text-white/50 hover:text-white hover:bg-black/80 transition-all"
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = filteredItems.findIndex(item => item.id === lightboxImage.id);
-                if (currentIndex > 0) setLightboxImage(filteredItems[currentIndex - 1]);
-              }}
-              disabled={filteredItems.findIndex(item => item.id === lightboxImage.id) === 0}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <button 
-              className="pointer-events-auto p-3 rounded-full bg-black/50 text-white/50 hover:text-white hover:bg-black/80 transition-all"
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = filteredItems.findIndex(item => item.id === lightboxImage.id);
-                if (currentIndex < filteredItems.length - 1) setLightboxImage(filteredItems[currentIndex + 1]);
-              }}
-              disabled={filteredItems.findIndex(item => item.id === lightboxImage.id) === filteredItems.length - 1}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
         </div>
       )}
-    </BackgroundGradientAnimation>
-  );
-};
+    </main>
+  )
+}
 
-export default GalleryPage;
+export default GalleryPage

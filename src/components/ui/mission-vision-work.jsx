@@ -115,56 +115,50 @@ const BGWork = () => (
 const pillars = [
   {
     id: 'mission',
-    label: 'Our Purpose',
     title: 'Our Mission',
     description:
       'To foster a culture of innovation and entrepreneurship among students by providing the right resources, mentorship, and network to build scalable ventures.',
-    background: 'bg-[#0F2557]',
+    background: 'bg-[#5B8EC8]',
     BGComponent: BGMission,
   },
   {
     id: 'vision',
-    label: 'Our Future',
     title: 'Our Vision',
     description:
       'To make IIT Delhi the premier hub for student startups in Asia, where every innovative idea has the opportunity to become a global enterprise.',
-    background: 'bg-[#2D1B66]',
+    background: 'bg-[#8B6BC8]',
     BGComponent: BGVision,
   },
   {
     id: 'work',
-    label: 'What We Do',
     title: 'Our Work',
     description:
       'We organize hackathons, pitching sessions, mentorship clinics, and networking events that bridge the gap between academic learning and real-world execution.',
-    background: 'bg-[#065F5F]',
+    background: 'bg-[#4AB0A8]',
     BGComponent: BGWork,
   },
 ];
 
 /* ── Components ───────────────────────────────────────────────────────── */
 
-const PillarCard = ({ label, title, description, background, BGComponent }) => {
+const PillarCard = ({ title, description, background, BGComponent }) => {
   return (
     <motion.div
       whileHover="hover"
       transition={{ duration: 1, ease: 'backInOut' }}
       variants={{ hover: { scale: 1.05 } }}
-      className={`relative h-96 w-80 shrink-0 overflow-hidden rounded-xl p-8 ${background} shadow-lg hover:shadow-xl transition-shadow`}
+      className={`relative h-96 min-w-0 w-full overflow-hidden rounded-xl p-6 md:p-8 ${background} shadow-lg hover:shadow-xl transition-shadow`}
     >
       <div className="relative z-10 text-white">
-        <span className="mb-3 block w-fit rounded-full bg-white/20 backdrop-blur-sm px-3 py-0.5 text-sm font-medium text-white border border-white/20">
-          {label}
-        </span>
         <motion.h3
           initial={{ scale: 0.9 }}
           variants={{ hover: { scale: 1 } }}
           transition={{ duration: 1, ease: 'backInOut' }}
-          className="my-2 block origin-top-left font-heading font-extrabold text-4xl leading-tight"
+          className="my-1 block origin-top-left font-heading font-black text-white text-3xl md:text-5xl leading-[1.05] tracking-[-0.04em]"
         >
           {title}
         </motion.h3>
-        <p className="mt-3 text-sm leading-relaxed text-white/85">{description}</p>
+        <p className="mt-4 text-base md:text-lg leading-relaxed text-white/90">{description}</p>
       </div>
       <BGComponent />
     </motion.div>
@@ -173,7 +167,7 @@ const PillarCard = ({ label, title, description, background, BGComponent }) => {
 
 export const MissionVisionWork = () => {
   return (
-    <div className="mx-auto flex w-fit flex-wrap justify-center gap-6">
+    <div className="mx-auto grid w-full grid-cols-3 gap-3 md:gap-6">
       {pillars.map((pillar) => (
         <PillarCard key={pillar.id} {...pillar} />
       ))}

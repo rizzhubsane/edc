@@ -1,5 +1,3 @@
-import IIT from '../assets/IIT.jpg';
-import { Code, TrendingUp, Users, GraduationCap, Rocket, Briefcase, ArrowRight } from 'lucide-react';
 import genesis from '../assets/genesis.jpg';
 import venturestudio from '../assets/venturestudio.jpg';
 import industryconnect from '../assets/industryconnect.jpg';   

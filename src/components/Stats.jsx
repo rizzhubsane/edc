@@ -1,94 +1,109 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { Rocket, Users, Calendar } from 'lucide-react'
-import { Boxes } from './ui/background-boxes'
+import { useEffect, useRef, useState } from 'react'
 
-const CountUp = ({ end, suffix = '', duration = 2000 }) => {
+const CountUp = ({ end, suffix = '', duration = 1800, active }) => {
   const [count, setCount] = useState(0)
-  const countRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
+    if (!active) return
 
-    if (countRef.current) {
-      observer.observe(countRef.current)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      setCount(end)
+      return
     }
 
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isVisible) return
-
+    let rafId = 0
     let startTime = null
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime
       const progress = Math.min((currentTime - startTime) / duration, 1)
-      
-      // Easing function (easeOutExpo)
       const easeProgress = 1 - Math.pow(1 - progress, 3)
-      
-      setCount(Math.floor(easeProgress * end))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
+      setCount(progress >= 1 ? end : Math.floor(easeProgress * end))
+      if (progress < 1) rafId = requestAnimationFrame(animate)
     }
 
-    requestAnimationFrame(animate)
-  }, [isVisible, end, duration])
+    rafId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafId)
+  }, [active, end, duration])
 
   return (
-    <span ref={countRef}>
-      {count.toLocaleString()}{suffix}
+    <span className="tabular-nums">
+      {count.toLocaleString()}
+      {suffix}
     </span>
   )
 }
 
+const STATS = [
+  { value: 10000, suffix: '+', label: 'Startups Supported' },
+  { value: 25000, suffix: '+', label: 'Students Engaged' },
+  { value: 100, suffix: '+', label: 'Events Hosted' },
+]
+
 const Stats = () => {
-  const stats = [
-    { value: 10000, suffix: '+', label: 'Startups Supported', icon: <Rocket className="w-8 h-8 text-accent-cyan" /> },
-    { value: 25000, suffix: '+', label: 'Students Engaged', icon: <Users className="w-8 h-8 text-accent-cyan" /> },
-    { value: 100, suffix: '+', label: 'Events Hosted', icon: <Calendar className="w-8 h-8 text-accent-cyan" /> }
-  ]
+  const bandRef = useRef(null)
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    if (active) return
+    const node = bandRef.current
+    if (!node) return
+
+    let cancelled = false
+    const reveal = () => {
+      if (!cancelled) setActive(true)
+    }
+
+    const isInView = () => {
+      const rect = node.getBoundingClientRect()
+      const vh = window.innerHeight || document.documentElement.clientHeight
+      return rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < vh
+    }
+
+    if (isInView()) {
+      reveal()
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          reveal()
+          observer.disconnect()
+        }
+      },
+      { threshold: 0, root: null, rootMargin: '0px' }
+    )
+    observer.observe(node)
+
+    const onScrollOrResize = () => {
+      if (isInView()) {
+        reveal()
+        observer.disconnect()
+      }
+    }
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize)
+
+    return () => {
+      cancelled = true
+      observer.disconnect()
+      window.removeEventListener('scroll', onScrollOrResize)
+      window.removeEventListener('resize', onScrollOrResize)
+    }
+  }, [active])
 
   return (
-    <section className="relative w-full bg-neutral-white py-20 px-4 overflow-hidden min-h-[300px] flex items-center">
-      {/* Background Boxes */}
-      <div className="absolute inset-0 w-full h-full bg-neutral-white z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-      <Boxes className="opacity-60" />
-
-      <div className="relative z-20 max-w-[1000px] mx-auto w-full pointer-events-none">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-4 pointer-events-auto">
-          {stats.map((stat, index) => (
-            <React.Fragment key={index}>
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-4 p-4 bg-primary-deep/5 rounded-full">
-                  {stat.icon}
-                </div>
-                <h3 className="font-heading font-bold text-[clamp(2rem,4vw,3rem)] text-primary-dark mb-2">
-                  <CountUp end={stat.value} suffix={stat.suffix} />
-                </h3>
-                <p className="font-body text-[0.9rem] uppercase tracking-[1px] text-[#6B5B8A] font-medium">
-                  {stat.label}
-                </p>
-              </div>
-              
-              {/* Divider for mobile */}
-              {index < stats.length - 1 && (
-                <div className="md:hidden w-16 h-[1px] bg-neutral-muted/30"></div>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+    <section ref={bandRef} className="band-deep">
+      <div className="site-wrap py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 text-center">
+        {STATS.map((stat) => (
+          <div key={stat.label}>
+            <p className="font-heading text-[clamp(2rem,4vw,2.75rem)] font-semibold text-white tracking-[-0.04em] leading-none tabular-nums">
+              <CountUp end={stat.value} suffix={stat.suffix} active={active} />
+            </p>
+            <p className="mt-3 text-[13px] text-white/70">{stat.label}</p>
+          </div>
+        ))}
       </div>
     </section>
   )
