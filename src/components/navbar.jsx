@@ -10,6 +10,7 @@ const LINKS = [
   { href: 'https://becon.edciitd.com', label: 'BECon' },
   { to: '/resources', label: 'Resources' },
   { to: '/gallery', label: 'Gallery' },
+  { to: '/faq', label: 'FAQ' },
 ]
 
 const Navbar = () => {
@@ -32,14 +33,14 @@ const Navbar = () => {
   }, [open])
 
   const linkClass = ({ isActive }) =>
-    `text-[13px] font-medium tracking-[-0.01em] transition-colors ${
+    `text-[14px] font-medium tracking-[-0.01em] transition-colors duration-500 ${
       isActive ? 'text-ink' : 'text-muted hover:text-ink'
     }`
 
   return (
     <>
     <header
-      className={`glass-nav z-50 h-[52px] ${scrolled ? 'is-scrolled' : ''}`}
+      className={`glass-nav z-50 ${scrolled ? 'is-scrolled' : ''}`}
     >
       <nav className="site-wrap h-full grid grid-cols-[1fr_auto_1fr] items-center max-md:flex max-md:justify-between">
         <button
@@ -51,17 +52,17 @@ const Navbar = () => {
           <img
             src={logo}
             alt=""
-            className="h-7 w-7 object-contain"
-            width={28}
-            height={28}
+            className="h-8 w-8 object-contain"
+            width={32}
+            height={32}
             decoding="async"
           />
-          <span className="font-heading text-[14px] font-semibold text-ink tracking-[-0.02em] whitespace-nowrap">
+          <span className="font-heading text-[15px] font-semibold text-ink tracking-[-0.02em] whitespace-nowrap">
             eDC IIT Delhi
           </span>
         </button>
 
-        <div className="hidden md:flex items-center justify-center gap-4 lg:gap-6">
+            <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5">
           {LINKS.map((link) =>
             link.href ? (
               <a
@@ -69,7 +70,7 @@ const Navbar = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[13px] font-medium text-muted hover:text-ink transition-colors"
+                className="text-[14px] font-medium text-muted hover:text-ink transition-colors duration-500"
               >
                 {link.label}
               </a>
@@ -82,8 +83,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex justify-self-end">
-          <button type="button" className="pill pill-fill" onClick={() => navigate('/joinus')}>
-            Join Us
+          <button type="button" className="pill pill-fill" onClick={() => navigate('/contact')}>
+            Contact Us
           </button>
         </div>
 
@@ -94,15 +95,15 @@ const Navbar = () => {
           aria-expanded={open}
           aria-label="Menu"
         >
-          <span className={`block w-5 h-px bg-ink transition-transform ${open ? 'translate-y-[4px] rotate-45' : ''}`} />
-          <span className={`block w-5 h-px bg-ink transition-opacity ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-5 h-px bg-ink transition-transform ${open ? '-translate-y-[4px] -rotate-45' : ''}`} />
+          <span className={`block w-5 h-px bg-ink transition-transform duration-500 ${open ? 'translate-y-[4px] rotate-45' : ''}`} />
+          <span className={`block w-5 h-px bg-ink transition-opacity duration-500 ${open ? 'opacity-0' : ''}`} />
+          <span className={`block w-5 h-px bg-ink transition-transform duration-500 ${open ? '-translate-y-[4px] -rotate-45' : ''}`} />
         </button>
       </nav>
     </header>
 
       {open && (
-        <div className="md:hidden fixed inset-0 top-[52px] z-40 bg-[#f3eefc]">
+        <div className="md:hidden fixed inset-0 top-[var(--nav-h)] z-40 bg-[#f3eefc]">
           <div className="site-wrap py-6 flex flex-col gap-1">
             {LINKS.map((link) =>
               link.href ? (
@@ -133,10 +134,10 @@ const Navbar = () => {
               className="pill pill-fill mt-4 w-fit"
               onClick={() => {
                 setOpen(false)
-                navigate('/joinus')
+                navigate('/contact')
               }}
             >
-              Join Us
+              Contact Us
             </button>
           </div>
         </div>

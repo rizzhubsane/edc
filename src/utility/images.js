@@ -13,6 +13,7 @@ import Tanmay from '../assets/teams/TanmaySharma_core.jpg'
 import Tejas from '../assets/teams/TejasKamble_media.jpg'
 import Tripti from '../assets/teams/tripti_AnF.jpg'
 import Vaibhav from '../assets/teams/VaibhavPandey_SS.jpg'
+import prabhav from '../assets/teams/prabhav_tech.jpg'
 
 export const JPG = {
   edcteam,
@@ -33,4 +34,5 @@ export const PNG = {
   Kabir,
   Pratibha,
   Tejas,
+  prabhav,
 }

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 /* ── Animated SVG Backgrounds ─────────────────────────────────────────── */
 
-/** BGMission – concentric rings that expand outward on hover (target/focus) */
+/** BGMission: concentric rings that expand outward on hover (target/focus) */
 const BGMission = () => (
   <motion.svg
     width="320"
@@ -42,7 +42,7 @@ const BGMission = () => (
   </motion.svg>
 );
 
-/** BGVision – layered diamond paths that ascend on hover (aspiration/sight) */
+/** BGVision: layered diamond paths that ascend on hover (aspiration/sight) */
 const BGVision = () => (
   <motion.svg
     width="320"
@@ -75,7 +75,7 @@ const BGVision = () => (
   </motion.svg>
 );
 
-/** BGWork – two offset rectangles that swap positions on hover (action/movement) */
+/** BGWork: two offset rectangles that swap positions on hover (action/movement) */
 const BGWork = () => (
   <motion.svg
     width="320"
@@ -118,7 +118,7 @@ const pillars = [
     title: 'Our Mission',
     description:
       'To foster a culture of innovation and entrepreneurship among students by providing the right resources, mentorship, and network to build scalable ventures.',
-    background: 'bg-[#5B8EC8]',
+    background: 'bg-ink',
     BGComponent: BGMission,
   },
   {
@@ -126,7 +126,7 @@ const pillars = [
     title: 'Our Vision',
     description:
       'To make IIT Delhi the premier hub for student startups in Asia, where every innovative idea has the opportunity to become a global enterprise.',
-    background: 'bg-[#8B6BC8]',
+    background: 'bg-brand',
     BGComponent: BGVision,
   },
   {
@@ -134,7 +134,7 @@ const pillars = [
     title: 'Our Work',
     description:
       'We organize hackathons, pitching sessions, mentorship clinics, and networking events that bridge the gap between academic learning and real-world execution.',
-    background: 'bg-[#4AB0A8]',
+    background: 'bg-brand-bright',
     BGComponent: BGWork,
   },
 ];
@@ -147,7 +147,7 @@ const PillarCard = ({ title, description, background, BGComponent }) => {
       whileHover="hover"
       transition={{ duration: 1, ease: 'backInOut' }}
       variants={{ hover: { scale: 1.05 } }}
-      className={`relative h-96 min-w-0 w-full overflow-hidden rounded-xl p-6 md:p-8 ${background} shadow-lg hover:shadow-xl transition-shadow`}
+      className={`relative h-96 min-w-0 w-full overflow-hidden rounded-[18px] p-6 md:p-8 ${background} shadow-[var(--sh-card)] hover:shadow-[var(--sh-lift)] transition-shadow duration-500`}
     >
       <div className="relative z-10 text-white">
         <motion.h3

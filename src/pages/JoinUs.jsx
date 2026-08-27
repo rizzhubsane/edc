@@ -41,10 +41,10 @@ const JoinUs = () => {
       <header className="page-hero">
         <div className="site-wrap">
           <h1 className="text-hero font-semibold text-ink tracking-[-0.038em] text-balance max-w-[16ch] mx-auto">
-            Join Us
+            Contact Us
           </h1>
           <p className="mt-5 text-[18px] leading-relaxed text-muted max-w-[34rem] mx-auto">
-            Whether you're a founder, industry leader, or brand — there's a place for you in India's most vibrant student entrepreneurship ecosystem.
+            Whether you're a founder, industry leader, or brand, there's a place for you in India's most vibrant student entrepreneurship ecosystem.
           </p>
         </div>
       </header>

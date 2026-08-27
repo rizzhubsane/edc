@@ -59,7 +59,7 @@ const About = () => {
             About Us
           </h1>
           <p className="mt-5 text-[18px] leading-relaxed text-muted max-w-[34rem] mx-auto">
-            Building India's most vibrant student entrepreneurship community since 2002.
+            Building India's most vibrant student entrepreneurship community.
           </p>
         </div>
       </header>
@@ -72,7 +72,7 @@ const About = () => {
 
       <section className="band-lilac">
         <div className="site-wrap py-16 md:py-24">
-          <h2 className="text-h2 text-ink text-center mb-10">Core Team</h2>
+          <h2 className="section-title text-h2 text-ink text-center mb-10">Core Team</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {coreTeam.map((member) => (
               <Person key={member.name} member={member} />
@@ -83,7 +83,7 @@ const About = () => {
 
       <section className="band-white">
         <div className="site-wrap py-16 md:py-24">
-          <h2 className="text-h2 text-ink text-center mb-10">Team Members</h2>
+          <h2 className="section-title text-h2 text-ink text-center mb-10">Team Members</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
             {teamMembers.map((member) => (
               <Person key={member.name} member={member} />

@@ -9,6 +9,7 @@ const Initiative = lazy(() => import('./pages/Initiative'))
 const Alumni = lazy(() => import('./pages/Alumni'))
 const Resource = lazy(() => import('./pages/Resource'))
 const Gallery = lazy(() => import('./pages/Gallery'))
+const FAQ = lazy(() => import('./pages/FAQ'))
 const JoinUs = lazy(() => import('./pages/JoinUs'))
 
 const PageFallback = () => (
@@ -33,7 +34,9 @@ function App() {
           <Route path="/startups" element={<Navigate to="/alumni" replace />} />
           <Route path="/resources" element={<Resource />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/joinus" element={<JoinUs />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<JoinUs />} />
+          <Route path="/joinus" element={<Navigate to="/contact" replace />} />
         </Routes>
         <Footer />
       </Suspense>

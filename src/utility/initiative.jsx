@@ -19,19 +19,19 @@ const initiatives = [
 
 {
   title: 'Industry Connect',
-  description: 'Industry Connect by eDC IIT Delhi bridges academia and industry through two key initiatives – Trend Talks and Industry Visits. Trend Talks are closed-room, Harvard-style discussions on emerging trends, market shifts, and technologies, fostering critical thinking and innovation. Industry Visits offer selected students firsthand exposure to real-world operations at companies like Vecmocon Technologies, Tsuyo Pvt. Ltd., and Chakr Innovations, enabling them to engage with professionals, understand challenges, and explore how ideas evolve into impactful, scalable solutions.',
+  description: 'Industry Connect by eDC IIT Delhi bridges academia and industry through two key initiatives: Trend Talks and Industry Visits. Trend Talks are closed-room, Harvard-style discussions on emerging trends, market shifts, and technologies, fostering critical thinking and innovation. Industry Visits offer selected students firsthand exposure to real-world operations at companies like Vecmocon Technologies, Tsuyo Pvt. Ltd., and Chakr Innovations, enabling them to engage with professionals, understand challenges, and explore how ideas evolve into impactful, scalable solutions.',
   image:  industryconnect,
 },
 
 {
   title: 'Regionals',
-  description: 'BECon Regionals takes IIT Delhi’s flagship entrepreneurship conclave nationwide, connecting students, startups, and industry leaders through its three marquee events — Moonshot, Blueprint, and Startup Clinic. After successful editions in Mumbai, Bangalore, and Hyderabad, it now expands to new cities, fostering local innovation. Featuring speakers like Atul Batra, Anoj Viswanathan, Anil Agarwal, and investors such as Kunal Bahl, Ritesh Malik, and Sanjay Mehta, BECon Regionals builds momentum for the Grand Finale at IIT Delhi.',
+  description: 'BECon Regionals takes IIT Delhi’s flagship entrepreneurship conclave nationwide, connecting students, startups, and industry leaders through its three marquee events: Moonshot, Blueprint, and Startup Clinic. After successful editions in Mumbai, Bangalore, and Hyderabad, it now expands to new cities, fostering local innovation. Featuring speakers like Atul Batra, Anoj Viswanathan, Anil Agarwal, and investors such as Kunal Bahl, Ritesh Malik, and Sanjay Mehta, BECon Regionals builds momentum for the Grand Finale at IIT Delhi.',
   image: regionals,
 },
 
 {
   title: 'Moonshot',
-  description: 'Moonshot is eDC IIT Delhi’s flagship startup funding showcase – our version of Shark Tank where early-stage startups pitch to top investors, VCs, and incubators. Since 2021, it has become a premier platform for securing funding, mentorship, and visibility. Featuring 50+ investors and founders, including Alok Mittal, Atul Batra, Pawan Kumar, and Anoj Viswanathan, Moonshot empowers young entrepreneurs to refine ideas, gain real-world feedback, and turn bold visions into impactful ventures on a national stage.',
+  description: 'Moonshot is eDC IIT Delhi’s flagship startup funding showcase, our version of Shark Tank where early-stage startups pitch to top investors, VCs, and incubators. Since 2021, it has become a premier platform for securing funding, mentorship, and visibility. Featuring 50+ investors and founders, including Alok Mittal, Atul Batra, Pawan Kumar, and Anoj Viswanathan, Moonshot empowers young entrepreneurs to refine ideas, gain real-world feedback, and turn bold visions into impactful ventures on a national stage.',
   image: moonshot,
 },
 
