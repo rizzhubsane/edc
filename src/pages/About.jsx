@@ -73,7 +73,7 @@ const About = () => {
       <section className="band-lilac">
         <div className="site-wrap py-16 md:py-24">
           <h2 className="section-title text-h2 text-ink text-center mb-10">Core Team</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
             {coreTeam.map((member) => (
               <Person key={member.name} member={member} />
             ))}

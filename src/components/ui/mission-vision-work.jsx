@@ -147,18 +147,18 @@ const PillarCard = ({ title, description, background, BGComponent }) => {
       whileHover="hover"
       transition={{ duration: 1, ease: 'backInOut' }}
       variants={{ hover: { scale: 1.05 } }}
-      className={`relative h-96 min-w-0 w-full overflow-hidden rounded-[18px] p-6 md:p-8 ${background} shadow-[var(--sh-card)] hover:shadow-[var(--sh-lift)] transition-shadow duration-500`}
+      className={`relative min-h-[22rem] min-w-0 w-full overflow-hidden rounded-[18px] p-6 md:h-96 md:p-8 ${background} shadow-[var(--sh-card)] hover:shadow-[var(--sh-lift)] transition-shadow duration-500`}
     >
       <div className="relative z-10 text-white">
         <motion.h3
           initial={{ scale: 0.9 }}
           variants={{ hover: { scale: 1 } }}
           transition={{ duration: 1, ease: 'backInOut' }}
-          className="my-1 block origin-top-left font-heading font-black text-white text-3xl md:text-5xl leading-[1.05] tracking-[-0.04em]"
+          className="my-1 block origin-top-left font-heading font-black text-white text-2xl sm:text-3xl md:text-5xl leading-[1.05] tracking-[-0.04em]"
         >
           {title}
         </motion.h3>
-        <p className="mt-4 text-base md:text-lg leading-relaxed text-white/90">{description}</p>
+        <p className="mt-4 text-[15px] sm:text-base md:text-lg leading-relaxed text-white/90">{description}</p>
       </div>
       <BGComponent />
     </motion.div>
@@ -167,7 +167,7 @@ const PillarCard = ({ title, description, background, BGComponent }) => {
 
 export const MissionVisionWork = () => {
   return (
-    <div className="mx-auto grid w-full grid-cols-3 gap-3 md:gap-6">
+    <div className="mx-auto grid w-full grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
       {pillars.map((pillar) => (
         <PillarCard key={pillar.id} {...pillar} />
       ))}

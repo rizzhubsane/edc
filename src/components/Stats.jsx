@@ -96,7 +96,7 @@ const Stats = () => {
 
   return (
     <section ref={bandRef} className="band-deep">
-      <Stagger className="site-wrap py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 text-center">
+      <Stagger className="site-wrap py-12 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 text-center">
         {STATS.map((stat) => (
           <StaggerItem key={stat.label}>
             <p className="font-heading text-[clamp(2rem,4vw,2.75rem)] font-semibold text-white tracking-[-0.04em] leading-none tabular-nums">

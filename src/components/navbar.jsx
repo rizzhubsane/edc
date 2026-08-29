@@ -42,7 +42,7 @@ const Navbar = () => {
     <header
       className={`glass-nav z-50 ${scrolled ? 'is-scrolled' : ''}`}
     >
-      <nav className="site-wrap h-full grid grid-cols-[1fr_auto_1fr] items-center max-md:flex max-md:justify-between">
+      <nav className="site-wrap h-full grid grid-cols-[1fr_auto_1fr] items-center max-lg:flex max-lg:justify-between">
         <button
           type="button"
           onClick={() => navigate('/')}
@@ -52,12 +52,12 @@ const Navbar = () => {
           <img
             src={logo}
             alt="eDC IIT Delhi"
-            className="h-[58px] w-auto object-contain object-left"
+            className="h-12 w-auto object-contain object-left lg:h-[58px]"
             decoding="async"
           />
         </button>
 
-            <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5">
+            <div className="hidden lg:flex items-center justify-center gap-3 xl:gap-5">
           {LINKS.map((link) =>
             link.href ? (
               <a
@@ -77,7 +77,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="hidden md:flex justify-self-end">
+        <div className="hidden lg:flex justify-self-end">
           <button type="button" className="pill pill-fill" onClick={() => navigate('/contact')}>
             Contact Us
           </button>
@@ -85,7 +85,7 @@ const Navbar = () => {
 
         <button
           type="button"
-          className="md:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
+          className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Menu"
@@ -98,7 +98,7 @@ const Navbar = () => {
     </header>
 
       {open && (
-        <div className="md:hidden fixed inset-0 top-[var(--nav-h)] z-40 bg-[#f3eefc]">
+        <div className="lg:hidden fixed inset-0 top-[var(--nav-h)] z-40 bg-[#f3eefc]">
           <div className="site-wrap py-6 flex flex-col gap-1">
             {LINKS.map((link) =>
               link.href ? (

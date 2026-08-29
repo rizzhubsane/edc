@@ -86,7 +86,9 @@ const GalleryPage = () => {
                   type="button"
                   onClick={() => setLightbox(index)}
                   className={`relative overflow-hidden rounded-[20px] bg-canvas-soft img-zoom ${
-                    index === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto md:min-h-[420px]' : 'aspect-square'
+                    index === 0
+                      ? 'col-span-2 aspect-[4/3] md:row-span-2 md:aspect-auto md:min-h-[420px]'
+                      : 'aspect-square'
                   }`}
                 >
                   <img

@@ -33,18 +33,18 @@ const Hero = () => {
     >
       <div className="hero-gears" aria-hidden="true">
         <motion.div
-          className="absolute -right-20 top-[68%] md:-right-20 md:top-[30%] lg:-right-24"
+          className="absolute -right-16 top-[18%] opacity-50 md:-right-20 md:top-[30%] md:opacity-100 lg:-right-24"
           style={reduce ? undefined : { y: yRight }}
         >
-          <div className="hero-gear-spin relative h-[120px] w-[120px] md:h-[220px] md:w-[220px] lg:h-[300px] lg:w-[300px] xl:h-[340px] xl:w-[340px]">
+          <div className="hero-gear-spin relative h-[88px] w-[88px] md:h-[220px] md:w-[220px] lg:h-[300px] lg:w-[300px] xl:h-[340px] xl:w-[340px]">
             <img src={gear1} alt="" className="hero-gear__img" />
           </div>
         </motion.div>
         <motion.div
-          className="absolute -left-16 top-[6%] md:-left-16 md:top-[12%] lg:-left-20"
+          className="absolute -left-14 top-[8%] opacity-50 md:-left-16 md:top-[12%] md:opacity-100 lg:-left-20"
           style={reduce ? undefined : { y: yLeft }}
         >
-          <div className="hero-gear-spin-rev relative h-[110px] w-[110px] md:h-[200px] md:w-[200px] lg:h-[260px] lg:w-[260px] xl:h-[300px] xl:w-[300px]">
+          <div className="hero-gear-spin-rev relative h-[80px] w-[80px] md:h-[200px] md:w-[200px] lg:h-[260px] lg:w-[260px] xl:h-[300px] xl:w-[300px]">
             <img src={gear2} alt="" className="hero-gear__img" />
           </div>
         </motion.div>
@@ -57,10 +57,10 @@ const Hero = () => {
           </div>
         </motion.div>
         <motion.div
-          className="absolute -left-20 bottom-[2%] md:-left-20 md:bottom-[6%] lg:-left-24 lg:bottom-[8%]"
+          className="absolute -left-20 bottom-[6%] hidden md:block md:-left-20 lg:-left-24 lg:bottom-[8%]"
           style={reduce ? undefined : { y: yBottom }}
         >
-          <div className="hero-gear-spin-rev relative h-[100px] w-[100px] md:h-[180px] md:w-[180px] lg:h-[220px] lg:w-[220px] xl:h-[250px] xl:w-[250px]">
+          <div className="hero-gear-spin-rev relative h-[180px] w-[180px] lg:h-[220px] lg:w-[220px] xl:h-[250px] xl:w-[250px]">
             <img src={gear3} alt="" className="hero-gear__img" />
           </div>
         </motion.div>
@@ -76,10 +76,10 @@ const Hero = () => {
         <h1 className="text-hero font-heading font-semibold text-ink leading-[1.08] tracking-[-0.038em] text-balance">
           Entrepreneurship Development Cell
         </h1>
-        <p className="mt-5 text-[18px] md:text-[20px] leading-relaxed text-muted max-w-[600px] mx-auto">
+        <p className="mt-4 text-[16px] leading-relaxed text-muted max-w-[600px] mx-auto sm:mt-5 sm:text-[18px] md:text-[20px]">
           India&apos;s largest student-driven entrepreneurship cell, fostering innovation at IIT Delhi.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3 sm:mt-8">
           <button type="button" className="pill pill-fill h-11 px-5" onClick={() => navigate('/initial')}>
             Explore Initiatives
           </button>

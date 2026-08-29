@@ -31,7 +31,7 @@ function InitiativeCard({ item, index }) {
     <motion.article
       ref={ref}
       id={id}
-      className="init-card scroll-mt-[72px]"
+      className="init-card scroll-mt-[calc(var(--nav-h)+0.75rem)]"
       initial={{ opacity: 0, y: 36 }}
       animate={{
         opacity: show ? 1 : 0,

@@ -27,11 +27,11 @@
   --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
 
-  --text-hero: clamp(2.85rem, 6.6vw, 4.85rem);
-  --text-h1: clamp(2rem, 4vw, 3.25rem);
-  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-hero: clamp(2.25rem, 6.6vw, 4.85rem);
+  --text-h1: clamp(1.75rem, 4vw, 3.25rem);
+  --text-h2: clamp(1.35rem, 3vw, 2.25rem);
   --text-h3: clamp(1.125rem, 2vw, 1.5rem);
-  --text-section: clamp(2.25rem, 4.5vw, 3.375rem);
+  --text-section: clamp(1.85rem, 4.5vw, 3.375rem);
   --text-body: 1.0625rem;
   --text-small: 0.875rem;
 }
@@ -153,7 +153,13 @@
   }
 
   section.band-deep {
-    margin-block: -56px;
+    margin-block: -32px;
+  }
+
+  @media (min-width: 768px) {
+    section.band-deep {
+      margin-block: -56px;
+    }
   }
 
   footer.band-deep {
@@ -437,6 +443,13 @@
 
   .page-hero p {
     animation: fade-up 1.2s var(--ease-out-quart) 0.16s both;
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .page-hero p {
+      font-size: 18px;
+    }
   }
 
   .chip {

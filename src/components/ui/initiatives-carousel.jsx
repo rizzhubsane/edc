@@ -7,7 +7,7 @@ const CARD_CLASS =
   'relative isolate h-[min(24rem,64vw)] w-[calc(100%-3.5rem)] max-w-[40rem] shrink-0 snap-start overflow-hidden rounded-[1.75rem] bg-ink [clip-path:inset(0_round_1.75rem)] md:h-[26rem] md:w-[calc(100%-7rem)] md:max-w-[54rem] md:rounded-[2rem] md:[clip-path:inset(0_round_2rem)]'
 
 const META_CLASS =
-  'mt-5 flex w-full items-center justify-between gap-5'
+  'mt-5 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5'
 
 const CTA_CLASS =
   'inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-white pl-1.5 pr-4 text-[13px] font-semibold leading-none text-ink shadow-[0_8px_24px_rgba(13,11,46,0.18)] md:h-14 md:gap-2.5 md:pl-2 md:pr-5 md:text-[15px]'
@@ -225,8 +225,8 @@ export function InitiativesCarousel({
                 className="pointer-events-none absolute inset-0 h-full w-full rounded-[inherit] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-4 p-5 md:p-7">
-                <h3 className="flex h-12 min-w-0 items-center truncate font-heading text-[3rem] font-semibold leading-none tracking-[-0.055em] text-white md:h-14 md:text-[3.5rem]">
+              <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 md:p-7">
+                <h3 className="min-w-0 font-heading text-[1.7rem] font-semibold leading-[1.05] tracking-[-0.055em] text-white sm:truncate sm:text-[2.15rem] md:h-14 md:text-[3.5rem] md:leading-none">
                   {item.title}
                 </h3>
                 <CardCta

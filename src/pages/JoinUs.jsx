@@ -52,8 +52,8 @@ const JoinUs = () => {
       <section className="band-lilac">
         <div className="site-wrap pt-4 pb-16 md:pt-6 md:pb-24 grid md:grid-cols-2 gap-5">
           {FORMS.map((form) => (
-            <article key={form.id} className="card-surface p-8 md:p-10 flex flex-col">
-              <h2 className="text-[24px] font-semibold text-ink tracking-[-0.03em]">{form.heading}</h2>
+            <article key={form.id} className="card-surface p-6 sm:p-8 md:p-10 flex flex-col">
+              <h2 className="text-[20px] sm:text-[22px] md:text-[24px] font-semibold text-ink tracking-[-0.03em]">{form.heading}</h2>
               <p className="mt-3 text-[15px] leading-relaxed text-muted flex-1">{form.body}</p>
               <a
                 href={form.link}
