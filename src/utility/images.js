@@ -1,5 +1,5 @@
 import Ekansh from '../assets/ekansh_core.webp'
-import edcteam from '../assets/edc_team.jpg'
+import edcteam from '../assets/edc_team.png'
 import chirag from '../assets/teams/chirag_CR.jpg'
 import Aghamarsh from '../assets/teams/AghamarshChetluru_OC.jpg'
 import Dishit from '../assets/teams/DishitJohari_events.jpeg'

@@ -6,7 +6,7 @@ import { InitiativesCarousel } from '../components/ui/initiatives-carousel'
 import { TestimonialsBento } from '../components/ui/testimonials-bento'
 import { Reveal } from '../components/ui/reveal'
 import { SpeakersMarquee } from '../components/ui/speakers-marquee'
-import edcteam from '../assets/edc_team.jpg'
+import edcteam from '../assets/edc_team.png'
 import venturestudio from '../assets/venturestudio.jpg'
 import moonshot from '../assets/Moonshot.JPG'
 import regionals from '../assets/regionals.jpg'
@@ -103,13 +103,13 @@ const Home = () => {
               Entrepreneurship Development Cell (eDC), IIT Delhi is India's largest student-driven organization committed to fostering a culture of innovation and entrepreneurship. Through a blend of experiential learning, mentorship, and industry engagement, eDC provides an enabling ecosystem where innovation thrives and ambition meets execution. At eDC, we don't just encourage entrepreneurship, we enable it, empowering innovators to build what they believe in.
             </p>
           </Reveal>
-          <Reveal delay={0.12} className="rounded-[24px] overflow-hidden bg-canvas-soft aspect-[4/3]">
+          <Reveal delay={0.12} className="rounded-[24px] overflow-hidden bg-canvas-soft aspect-[16/10]">
             <motion.img
               src={edcteam}
-              alt="eDC Team"
+              alt="eDC IIT Delhi full team"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
               initial={reduce ? false : { scale: 1.04 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
