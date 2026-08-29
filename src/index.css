@@ -38,7 +38,7 @@
 
 @layer base {
   :root {
-    --nav-h: 64px;
+    --nav-h: 76px;
     --max-width: 1480px;
     --page-gutter: clamp(20px, 3vw, 40px);
     --page-canvas: #f3eefc;

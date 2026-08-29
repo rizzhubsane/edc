@@ -46,13 +46,13 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="justify-self-start flex items-center gap-2 min-w-0"
+          className="justify-self-start flex items-center shrink-0"
           aria-label="eDC IIT Delhi home"
         >
           <img
             src={logo}
             alt="eDC IIT Delhi"
-            className="h-10 w-auto object-contain"
+            className="h-[58px] w-auto object-contain object-left"
             decoding="async"
           />
         </button>
