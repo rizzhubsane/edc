@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import logo from '../assets/edciitd.svg'
+import logo from '../assets/edc-logo-purple.png'
 
 const LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About Us' },
   { to: '/initial', label: 'Initiatives' },
-  { to: '/alumni', label: 'Alumni' },
+  // { to: '/alumni', label: 'Alumni' },
   { href: 'https://becon.edciitd.com', label: 'BECon' },
   { to: '/resources', label: 'Resources' },
   { to: '/gallery', label: 'Gallery' },
@@ -51,15 +51,10 @@ const Navbar = () => {
         >
           <img
             src={logo}
-            alt=""
-            className="h-8 w-8 object-contain"
-            width={32}
-            height={32}
+            alt="eDC IIT Delhi"
+            className="h-10 w-auto object-contain"
             decoding="async"
           />
-          <span className="font-heading text-[15px] font-semibold text-ink tracking-[-0.02em] whitespace-nowrap">
-            eDC IIT Delhi
-          </span>
         </button>
 
             <div className="hidden md:flex items-center justify-center gap-3 lg:gap-5">

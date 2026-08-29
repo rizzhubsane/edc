@@ -96,7 +96,7 @@ export function MinimalFooter() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <Link
             to="/"
-            className="inline-flex min-w-0 items-center"
+            className="inline-flex min-w-0 items-center translate-y-5 sm:translate-y-7 lg:translate-y-9"
             aria-label="eDC IIT Delhi home"
           >
             <img

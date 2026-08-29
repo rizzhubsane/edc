@@ -76,8 +76,8 @@ const QUOTES = [
   {
     quote:
       'eDC embodies the entrepreneurial spirit that IIT Delhi aspires to cultivate in every student. Their programs bridge the gap between academic excellence and real-world impact, producing founders who are not just technically sound but visionary in their thinking.',
-    name: 'Prof. Lakshmi Srinivasan',
-    role: 'Director, IIT Delhi',
+    name: 'Prof. R. Lakshmi Narayan',
+    role: 'Professor In-Charge, eDC, IIT Delhi',
     image: lakshmisir,
   },
 ]

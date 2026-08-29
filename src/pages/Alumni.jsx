@@ -5,15 +5,15 @@ import alumni from '../utility/alumni'
 import { AlumniNews } from '../components/ui/alumni-news'
 import DeepinderGoyal from '../assets/speakers/DeepinderGoyal.jpg'
 import SachinBansal from '../assets/speakers/SachinBansal.jpg'
-import KunalBahl from '../assets/speakers/KunalBahl.jpg'
-import SanjeevBikhchandani from '../assets/speakers/SanjeevBikhchandani.jpg'
+import AshneerGrover from '../assets/speakers/AshneerGrover.png'
+import RohitBansal from '../assets/speakers/RohitBansal.png'
 import AlokMittal from '../assets/aloksir.jpeg'
 
 const PHOTOS = {
   DeepinderGoyal,
   SachinBansal,
-  KunalBahl,
-  SanjeevBikhchandani,
+  AshneerGrover,
+  RohitBansal,
   AlokMittal,
 }
 
@@ -47,7 +47,7 @@ const Alumni = () => {
             Alumni
           </h1>
           <p className="mt-5 text-[18px] leading-relaxed text-muted max-w-[36rem] mx-auto">
-            People who were part of eDC, and what they&apos;re doing now. Many have gone on to start companies.
+            IIT Delhi graduates building companies, and mentors who work with eDC. This list stays with people who have raised recent capital or scaled a real venture.
           </p>
         </div>
       </header>
@@ -121,7 +121,7 @@ const Alumni = () => {
           )}
 
           <p className="mt-12 text-center text-[13px] text-muted max-w-[36rem] mx-auto">
-            A growing list of eDC alumni, not exhaustive. Were you part of eDC?{' '}
+            A growing list of IIT Delhi founders and eDC mentors, not exhaustive. Were you part of eDC?{' '}
             <Link to="/contact" className="text-brand font-medium hover:underline">
               Get in touch
             </Link>
